@@ -7,11 +7,11 @@
 	
 	<title>Pelouse calculator 2000</title>
 	
-	<link rel="stylesheet" href="main.css">	
+	<!--<link rel="stylesheet" href="main.css">	-->
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
-	<script src="/scripts.js"></script>
+	<script src="scripts.js"></script>
 	
 </head>
 
@@ -35,15 +35,15 @@
       
     </div>
     
-    <div class="step-2">
+    <div class="step-2" style="display: none;">
       
       <div class="parcelles">
       
-        <div id="parcelle-1" class="parcelle">
+        <div id="parcelle-1" class="parcelle first">
           
           <div class="parcelle-step-1">
             
-            <select id="select-forme">
+            <select class="select-forme">
               
               <option>Choisir la forme de la parcelle</option>
               
@@ -59,31 +59,35 @@
           
           <div class="parcelle-step-2">
             
-            <div class="parcelle-rectangle">
-              
-              <input type="number" placeholder="Longueur" required>
-              
-              <input type="number" placeholder="Largeur" required>
-              
-            </div>
+            <div class="parcelle-input">
             
-            <div class="parcelle-cercle">
+              <div class="parcelle-rectangle parcelle-forme" style="display: none;">
+                
+                <input type="number" placeholder="Longueur" class="parcelle-rectangle-height parcelle-rectangle-input" min="0" value="0" required>
+                
+                <input type="number" placeholder="Largeur" class="parcelle-rectangle-width parcelle-rectangle-input" min="0" value="0" required>
+                
+              </div>
               
-              <input type="number" placeholder="Diamètre" required>
+              <div class="parcelle-cercle parcelle-forme" style="display: none;">
+                
+                <input type="number" placeholder="Diamètre" class="parcelle-cercle-diam parcelle-cercle-input" min="0" value="0" required>
+                
+              </div>
               
-            </div>
+              <div class="parcelle-triangle parcelle-forme" style="display: none;">
+                
+                <input type="number" placeholder="Base" class="parcelle-triangle-base parcelle-triangle-input" min="0" value="0" required>
+                
+                <input type="number" placeholder="Hauteur" class="parcelle-triangle-height parcelle-triangle-input" min="0" value="0" required>
+                
+              </div>
             
-            <div class="parcelle-triangle">
-              
-              <input type="number" placeholder="Base" required>
-              
-              <input type="number" placeholder="Hauteur" required>
-              
             </div>
             
             <div class="parcelle-total">
               
-              <span>0</span>
+              <span></span>
               
             </div>
             
@@ -93,17 +97,33 @@
       
       </div>
       
+      <div class="parce"
+      
       <a id="add-parcelle">Ajouter une parcelle</a>
       
     </div>
     
     <div class="step-3">
       
-      <a id="calc-terre-toggle">Calculer la quantité de terre</a>
+      <a id="terre-toggle">Calculer la quantité de terre</a>
       
-      <div class="calc-terre">
+    </div>
+    
+    <div class="step-4" style="display: none;">
+      
+      <div class="terre">
         
-        <input type="number" placeholder="Épaisseur de terre" required>
+        <div class="terre-input">
+        
+          <input type="number" placeholder="Épaisseur de terre" required>
+        
+        </div>
+        
+        <div class="terre-total">
+              
+          <span>0</span>
+          
+        </div>
         
       </div>
       
