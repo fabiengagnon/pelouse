@@ -17,6 +17,100 @@
 
 <body>
   
+  <!-- snippet du calculateur -->
   
+  <div class="calculateur">
+    
+    <div class="step-1">
+      
+      <select id="select-unite">
+        
+        <option>Choisir l'unité de mesure</option>
+        
+        <option value="imperial">Impérial</option>
+        
+        <option value="metrique">Métrique</option>
+        
+      </select>
+      
+    </div>
+    
+    <div class="step-2">
+      
+      <div class="parcelles">
+      
+        <div id="parcelle-1" class="parcelle">
+          
+          <div class="parcelle-step-1">
+            
+            <select id="select-forme">
+              
+              <option>Choisir la forme de la parcelle</option>
+              
+              <option value="rectangle">Carré / Rectangle</option>
+              
+              <option value="cercle">Cercle</option>
+              
+              <option value="triangle">Triangle</option>
+              
+            </select>
+            
+          </div>
+          
+          <div class="parcelle-step-2">
+            
+            <div class="parcelle-rectangle">
+              
+              <input type="number" placeholder="Longueur" required>
+              
+              <input type="number" placeholder="Largeur" required>
+              
+            </div>
+            
+            <div class="parcelle-cercle">
+              
+              <input type="number" placeholder="Diamètre" required>
+              
+            </div>
+            
+            <div class="parcelle-triangle">
+              
+              <input type="number" placeholder="Base" required>
+              
+              <input type="number" placeholder="Hauteur" required>
+              
+            </div>
+            
+            <div class="parcelle-total">
+              
+              <span>0</span>
+              
+            </div>
+            
+          </div>
+          
+        </div>
+      
+      </div>
+      
+      <a id="add-parcelle">Ajouter une parcelle</a>
+      
+    </div>
+    
+    <div class="step-3">
+      
+      <a id="calc-terre-toggle">Calculer la quantité de terre</a>
+      
+      <div class="calc-terre">
+        
+        <input type="number" placeholder="Épaisseur de terre" required>
+        
+      </div>
+      
+    </div>
+    
+  </div>
+  
+  <!-- end snippet du calculateur -->
   
 </body>
