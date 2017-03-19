@@ -63,31 +63,41 @@
             
               <div class="parcelle-rectangle parcelle-forme" style="display: none;">
                 
-                <input type="number" placeholder="Longueur" class="parcelle-rectangle-height parcelle-rectangle-input" min="0" value="0" required>
+                <label>Longueur</label>
                 
-                <input type="number" placeholder="Largeur" class="parcelle-rectangle-width parcelle-rectangle-input" min="0" value="0" required>
+                <input type="number" placeholder="Longueur" class="parcelle-rectangle-height parcelle-rectangle-input parcelle-input" min="0" value="0" required> <span class="unite"></span>
+                
+                <label>Largeur</label>
+                
+                <input type="number" placeholder="Largeur" class="parcelle-rectangle-width parcelle-rectangle-input parcelle-input" min="0" value="0" required> <span class="unite"></span>
                 
               </div>
               
               <div class="parcelle-cercle parcelle-forme" style="display: none;">
                 
-                <input type="number" placeholder="Diamètre" class="parcelle-cercle-diam parcelle-cercle-input" min="0" value="0" required>
+                <label>Diamètre</label>
+                
+                <input type="number" placeholder="Diamètre" class="parcelle-cercle-diam parcelle-cercle-input parcelle-input" min="0" value="0" required> <span class="unite"></span>
                 
               </div>
               
               <div class="parcelle-triangle parcelle-forme" style="display: none;">
                 
-                <input type="number" placeholder="Base" class="parcelle-triangle-base parcelle-triangle-input" min="0" value="0" required>
+                <label>Base</label>
                 
-                <input type="number" placeholder="Hauteur" class="parcelle-triangle-height parcelle-triangle-input" min="0" value="0" required>
+                <input type="number" placeholder="Base" class="parcelle-triangle-base parcelle-triangle-input parcelle-input" min="0" value="0" required> <span class="unite"></span>
+                
+                <label>Hauteur</label>
+                
+                <input type="number" placeholder="Hauteur" class="parcelle-triangle-height parcelle-triangle-input parcelle-input" min="0" value="0" required> <span class="unite"></span>
                 
               </div>
             
             </div>
             
-            <div class="parcelle-total">
+            <div class="parcelle-total" data-total="0">
               
-              <span></span>
+              <span class="parcelle-total-value">0</span> <span class="unite2"></span>
               
             </div>
             
@@ -97,13 +107,17 @@
       
       </div>
       
-      <div class="parce"
+      <div class="parcelles-total" data-total="0">
+              
+        <span class="parcelles-total-value">0</span> <span class="unite2"></span>
+        
+      </div>
       
       <a id="add-parcelle">Ajouter une parcelle</a>
       
     </div>
     
-    <div class="step-3">
+    <div class="step-3" style="display: none;">
       
       <a id="terre-toggle">Calculer la quantité de terre</a>
       
@@ -113,15 +127,17 @@
       
       <div class="terre">
         
-        <div class="terre-input">
+        <div class="terre-inputs">
         
-          <input type="number" placeholder="Épaisseur de terre" required>
+          <label>Épaisseur de terre</label>
+          
+          <input type="number" placeholder="Épaisseur de terre" class="terre-input" required> <span class="unite-terre"></span>
         
         </div>
         
         <div class="terre-total">
               
-          <span>0</span>
+          <span class="terre-total-value">0</span> <span class="unite3"></span>
           
         </div>
         

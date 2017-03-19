@@ -7,6 +7,22 @@ $(document).ready(function() {
     
     $('.step-2').show();
     
+    $('.step-3').show();
+    
+    if ($(this).val() == 'metrique') {
+      var unite = 'Mètres';
+      var unite2 = 'Mètres carrés';
+      var unite3 = 'Mètres cubes';
+      var uniteTerre = 'Centimètres';
+    }
+    else {
+      var unite = 'Pieds';
+      var unite2 = 'Pieds carrés';
+      var unite3 = 'Verges cubes';
+      var uniteTerre = 'Pouces';
+    }
+    unites(unite, unite2, unite3, uniteTerre);
+    
   });
   
   $('#terre-toggle').click(function() {
@@ -23,13 +39,11 @@ $(document).ready(function() {
     var parcelle = $(this).parent().parent('.parcelle');
     var selectedForme = $(this).val();
     
-    console.log(parcelle);
-    
     $(parcelle).find('.parcelle-forme').hide();
     
     $(parcelle).find('.parcelle-' + selectedForme + '').show();
     
-    $(parcelle).find('.parcelle-total span').text('');
+    $(parcelle).find('.parcelle-total-value').text('');
     
   });
   
@@ -46,7 +60,7 @@ $(document).ready(function() {
       
       $(newParcelle).find('input').val(0);
       
-      $(newParcelle).find('.parcelle-total span').text('');
+      $(newParcelle).find('.parcelle-total-value').text('');
       
     });
     
@@ -77,7 +91,30 @@ $(document).ready(function() {
     
   });
   
+  $('.parcelles').on('change', '.parcelle-input', function() {
+    
+    parcellesTotal();
+    
+    terresTotal();
+    
+  });
+  
+  $('.terre').on('change', '.terre-input', function() {
+    
+    terresTotal();
+    
+  });
+  
 });
+
+function unites(unite, unite2, unite3, uniteTerre) {
+  
+  $('.unite').text(unite);
+  $('.unite2').text(unite2);
+  $('.unite3').text(unite3);
+  $('.unite-terre').text(uniteTerre);
+  
+}
 
 function parcelleRectangle(parcelle) {
   
@@ -85,7 +122,12 @@ function parcelleRectangle(parcelle) {
   var width = $(parcelle).find('.parcelle-rectangle-width').val();
   var total = calcRectangle(height, width);
   
-  $(parcelle).find('.parcelle-total span').text(total);
+  if(isNaN(total)) {
+    total = 0;
+  }
+  
+  $(parcelle).find('.parcelle-total').data('total', total);
+  $(parcelle).find('.parcelle-total-value').text(total);
   
 }
 
@@ -94,7 +136,12 @@ function parcelleCercle(parcelle) {
   var diam = $(parcelle).find('.parcelle-cercle-diam').val();
   var total = calcCercle(diam);
   
-  $(parcelle).find('.parcelle-total span').text(total);
+  if(isNaN(total)) {
+    total = 0;
+  }
+  
+  $(parcelle).find('.parcelle-total').data('total', total);
+  $(parcelle).find('.parcelle-total-value').text(total);
   
 }
 
@@ -104,7 +151,40 @@ function parcelleTriangle(parcelle) {
   var height = $(parcelle).find('.parcelle-triangle-height').val();
   var total = calcTriangle(base, height);
   
-  $(parcelle).find('.parcelle-total span').text(total);
+  if(isNaN(total)) {
+    total = 0;
+  }
+  
+  $(parcelle).find('.parcelle-total').data('total', total);
+  $(parcelle).find('.parcelle-total-value').text(total);
+  
+}
+
+function parcellesTotal() {
+  
+  var total = 0;
+  
+  $('.parcelle').each(function() {
+  
+    total = total + $(this).find('.parcelle-total').data('total');
+  
+  });
+  
+  $('.parcelles-total').data('total', total);
+  $('.parcelles-total-value').text(total);
+  
+}
+
+function terresTotal() {
+  
+  var total = calcTerre();
+    
+  if(isNaN(total)) {
+    total = 0;
+  }
+  
+  $('.terre-total').data('total', total);
+  $('.terre-total').text(total);
   
 }
 
@@ -127,5 +207,24 @@ function calcTriangle(base, height) {
 	var b = parseFloat(base);
 	var h = parseFloat(height);
 	return Math.ceil(b * h * 0.5);
+	
+}
+function calcTerre() {
+  
+  var parcellesTotal = $('.parcelles-total').data('total');
+  var terreHeight = $('.terre-input').val();
+  var terre = parseInt(parcellesTotal*terreHeight);
+  
+  console.log(parcellesTotal, terreHeight);
+  
+	if ($('#select-unite').val() == 'metrique') {
+		terreTotal = terre/100;
+		terreTotal = terreTotal.toFixed(2);
+	} else {
+		terreTotal = terre/324;
+		terreTotal = terreTotal.toFixed(2)
+	}
+	
+	return terreTotal;
 	
 }
